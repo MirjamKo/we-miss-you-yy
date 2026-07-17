@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tot ziens & Hallo Den Haag!</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sand: #FBF4E4;
+    --sand-deep: #F3E6C8;
+    --green: #1B6B45;
+    --green-deep: #0F4A30;
+    --yellow: #FFC933;
+    --yellow-deep: #F2A900;
+    --sea: #2C6E8F;
+    --ink: #1C2620;
+    --paper: #FFFDF8;
+    --shadow: rgba(15, 74, 48, 0.18);
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    background:var(--sand);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    overflow-x:hidden;
+  }
+  h1,h2,h3, .display{
+    font-family:'Baloo 2', sans-serif;
+    font-weight:700;
+    margin:0;
+  }
+  a{ color:inherit; }
+  img{ max-width:100%; display:block; }
+
+  .wrap{ max-width:1100px; margin:0 auto; padding:0 28px; }
+
+  /* subtle scattered background storks */
+  .bg-stork{
+    position:absolute;
+    opacity:0.07;
+    z-index:0;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:90px 0 70px;
+    text-align:center;
+    overflow:hidden;
+    background:
+      radial-gradient(circle at 15% 20%, var(--yellow) 0, transparent 38%),
+      radial-gradient(circle at 85% 15%, var(--green) 0, transparent 30%),
+      var(--sand);
+  }
+  .hero-eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--paper);
+    border:2px solid var(--green-deep);
+    color:var(--green-deep);
+    padding:6px 16px;
+    border-radius:999px;
+    font-weight:600;
+    font-size:0.85rem;
+    letter-spacing:0.03em;
+    margin-bottom:26px;
+    transform:rotate(-2deg);
+  }
+  .hero h1{
+    font-size:clamp(2.6rem, 7vw, 5rem);
+    line-height:1.02;
+    color:var(--green-deep);
+    letter-spacing:-0.01em;
+  }
+  .hero h1 .accent{
+    color:var(--yellow-deep);
+    -webkit-text-stroke:2px var(--green-deep);
+  }
+  .hero p.sub{
+    max-width:520px;
+    margin:22px auto 0;
+    font-size:1.15rem;
+    color:#3a4a3f;
+  }
+  .hero .stork-hero{
+    width:130px;
+    margin:34px auto 0;
+    animation: bob 4s ease-in-out infinite;
+  }
+  @keyframes bob{
+    0%,100%{ transform:translateY(0) rotate(-3deg); }
+    50%{ transform:translateY(-10px) rotate(3deg); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .hero .stork-hero{ animation:none; }
+  }
+
+  .wave{
+    display:block;
+    width:100%;
+    line-height:0;
+  }
+
+  /* ---------- SECTION LABELS ---------- */
+  .section{ padding:70px 0; position:relative; }
+  .section-head{ text-align:center; max-width:600px; margin:0 auto 48px; }
+  .section-head .kicker{
+    display:block;
+    font-family:'Baloo 2', sans-serif;
+    color:var(--sea);
+    font-weight:700;
+    font-size:0.95rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    margin-bottom:6px;
+  }
+  .section-head h2{
+    font-size:clamp(1.8rem, 4vw, 2.6rem);
+    color:var(--green-deep);
+  }
+  .section-head p{ margin-top:12px; color:#4a5850; font-size:1.05rem; }
+
+  /* ---------- SCRAPBOOK GALLERY ---------- */
+  .scrapbook{ background:var(--paper); }
+  .scrap-grid{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:36px 28px;
+    padding:20px 10px 10px;
+  }
+  .polaroid{
+    background:#fff;
+    padding:14px 14px 46px;
+    box-shadow:0 14px 28px var(--shadow);
+    width:210px;
+    position:relative;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .polaroid:hover{ transform:scale(1.06) rotate(0deg) !important; box-shadow:0 20px 34px var(--shadow); z-index:5; }
+  .polaroid .frame{
+    width:100%;
+    aspect-ratio:1/1;
+    background:linear-gradient(135deg, var(--green) 0%, var(--sea) 100%);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:rgba(255,255,255,0.85);
+    font-size:0.85rem;
+    text-align:center;
+    padding:10px;
+  }
+  .polaroid figcaption{
+    position:absolute;
+    bottom:12px; left:14px; right:14px;
+    font-family:'Baloo 2', sans-serif;
+    font-size:0.95rem;
+    color:var(--ink);
+    text-align:center;
+  }
+  .tape{
+    position:absolute;
+    top:-14px; left:50%;
+    width:70px; height:26px;
+    background:var(--yellow);
+    opacity:0.85;
+    transform:translateX(-50%) rotate(-4deg);
+    box-shadow:0 2px 4px rgba(0,0,0,0.15);
+  }
+  .polaroid:nth-child(1){ transform:rotate(-6deg); }
+  .polaroid:nth-child(2){ transform:rotate(4deg); margin-top:26px;}
+  .polaroid:nth-child(3){ transform:rotate(-3deg); }
+  .polaroid:nth-child(4){ transform:rotate(6deg); margin-top:14px;}
+  .polaroid:nth-child(5){ transform:rotate(-5deg); margin-top:32px;}
+  .polaroid:nth-child(6){ transform:rotate(3deg); }
+
+  .scrap-note{
+    text-align:center;
+    margin-top:36px;
+    color:#6b6b6b;
+    font-size:0.95rem;
+    font-style:italic;
+  }
+
+  /* ---------- MESSAGES ---------- */
+  .messages{ background:var(--sand-deep); }
+  .msg-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(230px, 1fr));
+    gap:22px;
+  }
+  .msg-card{
+    background:var(--paper);
+    border-radius:18px;
+    padding:24px 22px;
+    box-shadow:0 8px 20px var(--shadow);
+    border-top:6px solid var(--yellow);
+  }
+  .msg-card:nth-child(3n+2){ border-top-color:var(--green); }
+  .msg-card:nth-child(3n){ border-top-color:var(--sea); }
+  .msg-card p{ margin:0 0 14px; color:#33402f; line-height:1.5; }
+  .msg-card .who{
+    font-family:'Baloo 2', sans-serif;
+    font-weight:700;
+    color:var(--green-deep);
+  }
+
+  /* ---------- GUIDE ---------- */
+  .guide{ background:var(--paper); }
+  .guide-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
+    gap:24px;
+  }
+  .guide-card{
+    background:var(--sand);
+    border-radius:20px;
+    padding:26px 24px 24px;
+    position:relative;
+    overflow:hidden;
+  }
+  .guide-card::before{
+    content:"";
+    position:absolute;
+    top:-40px; right:-40px;
+    width:120px; height:120px;
+    border-radius:50%;
+    background:var(--yellow);
+    opacity:0.35;
+  }
+  .guide-card .icon{
+    font-size:1.8rem;
+    margin-bottom:10px;
+    display:block;
+  }
+  .guide-card h3{
+    font-size:1.25rem;
+    color:var(--green-deep);
+    margin-bottom:10px;
+    position:relative;
+  }
+  .guide-card ul{
+    margin:0; padding-left:18px;
+    color:#3a4a3f;
+    font-size:0.96rem;
+    line-height:1.6;
+    position:relative;
+  }
+  .guide-card li{ margin-bottom:4px; }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--green-deep);
+    color:var(--sand);
+    text-align:center;
+    padding:64px 24px 40px;
+    position:relative;
+  }
+  footer h2{
+    color:var(--yellow);
+    font-size:clamp(1.6rem, 4vw, 2.2rem);
+    margin-bottom:14px;
+  }
+  footer p{ color:#cfe3d6; max-width:460px; margin:0 auto 26px; }
+  .contact-row{
+    display:flex;
+    gap:14px;
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+  .contact-pill{
+    background:var(--yellow);
+    color:var(--green-deep);
+    font-family:'Baloo 2', sans-serif;
+    font-weight:700;
+    padding:10px 22px;
+    border-radius:999px;
+    text-decoration:none;
+    font-size:0.95rem;
+    transition:transform .2s ease;
+    display:inline-block;
+  }
+  .contact-pill:hover{ transform:translateY(-3px); }
+  footer .stork-foot{ width:60px; margin:36px auto 12px; opacity:0.8; }
+  footer .fine{ font-size:0.8rem; color:#8fb39c; margin-top:6px;}
+
+  :focus-visible{
+    outline:3px solid var(--sea);
+    outline-offset:2px;
+  }
+
+  @media (max-width:600px){
+    .polaroid{ width:150px; padding:10px 10px 36px; }
+    .section{ padding:52px 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ---------- HERO ---------- -->
+<section class="hero">
+  <div class="wrap">
+    <span class="hero-eyebrow">🦢 Een cadeautje voor jou</span>
+    <h1>Tot ziens Zürich,<br>hallo <span class="accent">Den Haag</span>!</h1>
+    <p class="sub">[Name], du ziehst um – aber du nimmst uns alle im Herzen mit. Hier sind unsere schönsten Erinnerungen und alles, was du für den Start in deiner neuen Stadt wissen musst.</p>
+    <!-- Stork illustration – Den Haag's city symbol -->
+    <svg class="stork-hero" viewBox="0 0 120 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="60" cy="118" rx="30" ry="6" fill="#0F4A30" opacity="0.15"/>
+      <path d="M60 30 C60 15, 75 8, 82 15 C88 21, 80 30, 70 32" stroke="#1B6B45" stroke-width="4" stroke-linecap="round" fill="none"/>
+      <ellipse cx="58" cy="45" rx="16" ry="22" fill="#FBF4E4" stroke="#1B6B45" stroke-width="3"/>
+      <circle cx="63" cy="32" r="9" fill="#FBF4E4" stroke="#1B6B45" stroke-width="3"/>
+      <path d="M71 31 L86 27 L72 36 Z" fill="#F2A900"/>
+      <circle cx="66" cy="30" r="1.6" fill="#1B6B45"/>
+      <path d="M50 60 L44 100" stroke="#F2A900" stroke-width="4" stroke-linecap="round"/>
+      <path d="M66 62 L70 100" stroke="#F2A900" stroke-width="4" stroke-linecap="round"/>
+      <path d="M44 100 L36 108 M44 100 L48 110" stroke="#F2A900" stroke-width="3" stroke-linecap="round"/>
+      <path d="M70 100 L64 110 M70 100 L76 108" stroke="#F2A900" stroke-width="3" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <svg class="wave" viewBox="0 0 1440 80" preserveAspectRatio="none" style="height:70px;">
+    <path d="M0,32 C240,80 480,0 720,24 C960,48 1200,72 1440,32 L1440,80 L0,80 Z" fill="#FFFDF8"/>
+  </svg>
+</section>
+
+<!-- ---------- SCRAPBOOK / FOTOS ---------- -->
+<section class="scrapbook section" id="fotos">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Erinnerungen</span>
+      <h2>Unser Fotoalbum</h2>
+      <p>Ein paar (viele!) Momente aus den letzten Jahren – bevor du in Den Haag neue dazu sammelst.</p>
+    </div>
+    <div class="scrap-grid">
+      <figure class="polaroid"><div class="tape"></div><div class="frame">📷 Foto hier einfügen</div><figcaption>Sommer 2021</figcaption></figure>
+      <figure class="polaroid"><div class="tape"></div><div class="frame">📷 Foto hier einfügen</div><figcaption>WG-Party</figcaption></figure>
+      <figure class="polaroid"><div class="tape"></div><div class="frame">📷 Foto hier einfügen</div><figcaption>Wanderung</figcaption></figure>
+      <figure class="polaroid"><div class="tape"></div><div class="frame">📷 Foto hier einfügen</div><figcaption>Silvester</figcaption></figure>
+      <figure class="polaroid"><div class="tape"></div><div class="frame">📷 Foto hier einfügen</div><figcaption>Grillabend</figcaption></figure>
+      <figure class="polaroid"><div class="tape"></div><div class="frame">📷 Foto hier einfügen</div><figcaption>Zuletzt</figcaption></figure>
+    </div>
+    <p class="scrap-note">✂️ Ersetzt die Platzhalter einfach durch eure echten Fotos – mehr dazu unten in der Anleitung.</p>
+  </div>
+</section>
+
+<!-- ---------- NACHRICHTEN ---------- -->
+<section class="messages section" id="nachrichten">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Von uns an dich</span>
+      <h2>Ein paar Worte zum Abschied</h2>
+    </div>
+    <div class="msg-grid">
+      <div class="msg-card"><p>"Schreib mir, sobald du deinen ersten Stroopwafel gegessen hast."</p><div class="who">– [Name 1]</div></div>
+      <div class="msg-card"><p>"Wir vermissen schon jetzt unsere Filmabende – aber Videocall geht ja auch!"</p><div class="who">– [Name 2]</div></div>
+      <div class="msg-card"><p>"Bring uns ein Fahrrad-Foto von dir mit, du wirst es brauchen 😄"</p><div class="who">– [Name 3]</div></div>
+      <div class="msg-card"><p>"Viel Erfolg im neuen Job – wir sind so stolz auf dich!"</p><div class="who">– [Name 4]</div></div>
+      <div class="msg-card"><p>"Besuch ist Pflicht, wir kommen im Sommer für den Strand vorbei."</p><div class="who">– [Name 5]</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ---------- GUIDE ---------- -->
+<section class="guide section" id="guide">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Praktisch</span>
+      <h2>Der Den Haag Guide</h2>
+      <p>Alles, was wir für dich zusammengetragen haben – zum Ankommen, Entdecken und Einleben.</p>
+    </div>
+    <div class="guide-grid">
+      <div class="guide-card">
+        <span class="icon">🏘️</span>
+        <h3>Ankommen</h3>
+        <ul>
+          <li>Stadtteile: Scheveningen (Strand), Statenkwartier (ruhig), Centrum (Nachtleben)</li>
+          <li>OV-chipkaart für Tram & Bus besorgen</li>
+          <li>Fahrrad kaufen oder leihen – in NL fast Pflicht</li>
+          <li>Anmeldung bei der Gemeinde (BSN-Nummer)</li>
+        </ul>
+      </div>
+      <div class="guide-card">
+        <span class="icon">🏛️</span>
+        <h3>Sehen & Erleben</h3>
+        <ul>
+          <li>Strand & Pier Scheveningen</li>
+          <li>Binnenhof – Regierungsviertel</li>
+          <li>Mauritshuis – Museum (Vermeer!)</li>
+          <li>Haagse Bos & Dünen für Spaziergänge</li>
+          <li>Tagesausflüge: Delft, Leiden, Amsterdam</li>
+        </ul>
+      </div>
+      <div class="guide-card">
+        <span class="icon">🧀</span>
+        <h3>Essen & Trinken</h3>
+        <ul>
+          <li>Wochenmarkt ausprobieren</li>
+          <li>Bitterballen & Stroopwafels testen</li>
+          <li>Lieblings-Café finden (dein neues Wohnzimmer)</li>
+          <li>[Platz für eure eigenen Tipps]</li>
+        </ul>
+      </div>
+      <div class="guide-card">
+        <span class="icon">📱</span>
+        <h3>Alltag & Apps</h3>
+        <ul>
+          <li>NS App – Zugverbindungen</li>
+          <li>9292 – ÖV-Planer</li>
+          <li>Too Good To Go – gegen Food Waste</li>
+          <li>Ein paar Brocken Niederländisch lernen 🇳🇱</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ---------- FOOTER ---------- -->
+<footer>
+  <div class="wrap">
+    <h2>Bleib in Verbindung</h2>
+    <p>Auch wenn du jetzt ein bisschen weiter weg bist – wir sind nur eine Nachricht entfernt.</p>
+    <div class="contact-row">
+      <a class="contact-pill" href="#">WhatsApp-Gruppe</a>
+      <a class="contact-pill" href="#">Instagram</a>
+      <a class="contact-pill" href="#">Foto-Album</a>
+    </div>
+    <svg class="stork-foot" viewBox="0 0 120 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M60 30 C60 15, 75 8, 82 15 C88 21, 80 30, 70 32" stroke="#FFC933" stroke-width="4" stroke-linecap="round" fill="none"/>
+      <ellipse cx="58" cy="45" rx="16" ry="22" fill="none" stroke="#FFC933" stroke-width="3"/>
+      <circle cx="63" cy="32" r="9" fill="none" stroke="#FFC933" stroke-width="3"/>
+      <path d="M50 60 L44 100" stroke="#FFC933" stroke-width="4" stroke-linecap="round"/>
+      <path d="M66 62 L70 100" stroke="#FFC933" stroke-width="4" stroke-linecap="round"/>
+    </svg>
+    <p class="fine">Gemacht mit ❤️ von deinen Freund:innen aus der Schweiz</p>
+  </div>
+</footer>
+
+</body>
+</html>
