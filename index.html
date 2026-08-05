@@ -146,24 +146,24 @@
   }
   .polaroid:hover{ transform:scale(1.06) rotate(0deg) !important; box-shadow:0 20px 34px var(--shadow); z-index:5; }
   .polaroid .frame{
-    width:100%;
-    aspect-ratio:1/1;
-    background:linear-gradient(135deg, var(--green) 0%, var(--sea) 100%);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:rgba(255,255,255,0.85);
-    font-size:0.85rem;
-    text-align:center;
-    padding:10px;
-  }
-  .polaroid .frame img{
-      width:calc(100% + 20px);
-      height:calc(100% + 20px);
-      margin:-10px;
-      object-fit:cover;
-      display:block;
-    } 
+  width:100%;
+  aspect-ratio:1/1;
+  background:linear-gradient(135deg, var(--green) 0%, var(--sea) 100%);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:rgba(255,255,255,0.85);
+  font-size:0.85rem;
+  text-align:center;
+  padding:0;
+  overflow:hidden;
+}
+.polaroid .frame img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
   .polaroid figcaption{
     position:absolute;
     bottom:12px; left:14px; right:14px;
